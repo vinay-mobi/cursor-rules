@@ -1,0 +1,83 @@
+# 🚀 Laravel Backend Coding Standards
+
+## ✅ Architecture
+
+- [ ] Follow MVC strictly (Controller → Service → Model)
+- [ ] Controllers must be thin (no business logic)
+- [ ] Business logic should be in Service classes
+- [ ] Use Repository pattern where needed
+- [ ] Reuse logic via Services/Traits (avoid duplication)
+
+---
+
+## ✅ Database & Eloquent
+
+- [ ] Avoid N+1 queries (use eager loading with `with()`)
+- [ ] Never write DB queries in Controllers
+- [ ] Use Eloquent ORM instead of raw queries (unless necessary)
+- [ ] Select only required columns (no `*`)
+- [ ] Use `chunk()` or `cursor()` for large datasets
+- [ ] Use bulk insert/update instead of loops
+
+---
+
+## ✅ Query Optimization
+
+- [ ] Use proper indexing on frequently queried columns
+- [ ] Avoid functions on indexed columns in WHERE
+- [ ] Use `whereIn` instead of multiple OR conditions
+- [ ] Avoid unnecessary joins
+- [ ] Cache heavy queries using Redis
+
+---
+
+## ✅ Error Handling & Logging
+
+- [ ] Use try-catch for critical operations
+- [ ] Log exceptions using `Log::error()`
+- [ ] Never expose raw errors to users
+- [ ] Add API request/response logs where needed
+
+---
+
+## ✅ Validation & Security
+
+- [ ] Use Form Request classes for validation
+- [ ] Never trust user input (sanitize everything)
+- [ ] Use `.env` for sensitive configs
+- [ ] Prevent SQL injection (no unsafe raw queries)
+
+---
+
+## ✅ Code Quality
+
+- [ ] Use proper naming conventions (camelCase for methods)
+- [ ] Keep functions small and single-purpose
+- [ ] Avoid deep nesting (>3 levels)
+- [ ] Add meaningful comments where required
+
+---
+
+## ✅ Queues & Jobs
+
+- [ ] Use Jobs for heavy operations
+- [ ] Ensure jobs are retry-safe
+- [ ] Log job failures
+- [ ] Avoid long-running synchronous tasks
+
+---
+
+## ✅ API Standards
+
+- [ ] Use Resource classes for API responses
+- [ ] Return proper HTTP status codes
+- [ ] Maintain consistent response structure
+
+---
+
+## 🚫 Avoid
+
+- [ ] DB queries in Controllers
+- [ ] N+1 queries
+- [ ] `dd()`, `dump()` in production
+- [ ] Hardcoded values

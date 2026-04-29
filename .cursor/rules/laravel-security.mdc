@@ -1,0 +1,43 @@
+---
+description: Laravel Security Rules (VAPT + OWASP)
+globs: *.php, app/**/*.php, routes/**/*.php
+alwaysApply: true
+---
+You must strictly enforce Laravel Security Rules (VAPT + OWASP) in all code.
+
+# 🔐 Laravel Security (VAPT + OWASP)
+
+## ✅ Authentication & Authorization
+- Use Laravel Sanctum or Passport for API authentication
+- Enforce Policies and Gates for all resource access (prevent IDOR)
+- Never expose sensitive endpoints without middleware (`auth`, `verified`)
+- No public admin/debug endpoints
+
+## ✅ Sensitive Data & Secrets
+- Never commit credentials/secrets
+- Use `.env` for all secrets and access via `config()` ONLY
+- Mask sensitive fields in API responses (`$hidden` in Eloquent models)
+- Never log passwords, tokens, or PII
+
+## ✅ Injection Prevention
+- Eloquent prevents SQL injection, but NEVER use raw user input in `DB::raw()`
+- Prevent XSS by using `{{ }}` in Blade (which escapes) instead of `{!! !!}`
+- Use strict validation for all inputs via Form Requests
+
+## ✅ CSRF & SSRF
+- Ensure CSRF protection is enabled for all web routes
+- Validate and sanitize any URLs fetched by the server (prevent SSRF)
+
+## ✅ File Handling
+- Validate file uploads (mimes, size) in Form Requests
+- Store private files securely, not in public disk
+
+## ✅ Misconfiguration
+- Set `APP_DEBUG=false` in production
+- Set secure session/cookie configurations (`secure`, `httponly`, `samesite`)
+- Ensure CORS is configured strictly
+
+## 🛡️ OWASP Mapping Focus
+- A01 Broken Access Control -> Use Policies/Gates
+- A03 Injection -> Use Eloquent and avoid `DB::raw`
+- A07 Authentication Failures -> Use built-in Auth, rate limiting (`throttle` middleware)

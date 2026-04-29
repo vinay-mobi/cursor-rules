@@ -1,0 +1,70 @@
+# 🚀 WordPress Backend Coding Standards
+
+## ✅ Architecture
+
+- [ ] Follow WordPress coding standards (hooks, filters)
+- [ ] Avoid modifying core files
+- [ ] Use plugins for custom functionality
+- [ ] Keep logic modular and reusable
+
+---
+
+## ✅ Database & Queries
+
+- [ ] Use $wpdb safely (prepare statements)
+- [ ] Avoid direct SQL unless necessary
+- [ ] Use WordPress functions (WP_Query, get_posts)
+- [ ] Avoid N+1 queries
+- [ ] Cache queries using transients
+
+---
+
+## ✅ Performance
+
+- [ ] Minimize database calls
+- [ ] Use object caching where possible
+- [ ] Avoid heavy operations on page load
+- [ ] Optimize queries and loops
+
+---
+
+## ✅ Security
+
+- [ ] Sanitize all inputs (`sanitize_text_field`, etc.)
+- [ ] Escape outputs (`esc_html`, `esc_attr`)
+- [ ] Use nonces for forms
+- [ ] Prevent SQL injection (use prepare)
+
+---
+
+## ✅ Code Quality
+
+- [ ] Follow WordPress naming conventions
+- [ ] Keep functions small and modular
+- [ ] Add proper comments (PHPDoc)
+- [ ] Avoid duplicate code
+
+---
+
+## ✅ Hooks & Filters
+
+- [ ] Use hooks instead of modifying core logic
+- [ ] Keep hooks lightweight
+- [ ] Remove unused hooks
+
+---
+
+## ✅ Debugging & Logging
+
+- [ ] Use WP_DEBUG for development only
+- [ ] Log errors properly
+- [ ] Remove debug logs in production
+
+---
+
+## 🚫 Avoid
+
+- [ ] Direct SQL without prepare
+- [ ] Hardcoding URLs/paths
+- [ ] Editing core files
+- [ ] Unescaped output
