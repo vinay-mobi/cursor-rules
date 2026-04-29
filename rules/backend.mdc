@@ -1,0 +1,143 @@
+You must strictly follow the below Node.js (TypeScript) Backend Coding Standards + Security (VAPT + OWASP) in all code generation, refactoring, and suggestions.
+
+Do not ignore any rule. Do not generate code that violates these standards.
+
+# 🚀 Node.js (TypeScript) Backend Coding Standards + Security (VAPT + OWASP)
+
+## ✅ Architecture
+- Follow layered architecture (Controller → Service → Repository)
+- Keep Controllers thin (no business logic)
+- Business logic must be in Services
+- No DB queries inside controllers
+- Use dependency injection where possible
+- Avoid tightly coupled code
+- Separate internal/admin/worker routes clearly
+
+## ✅ TypeScript Best Practices
+- Always use strict typing (no `any`)
+- Define interfaces/types for all data structures
+- Use enums/constants instead of hardcoded values
+- Enable strict mode in tsconfig
+
+## ✅ Database & Queries
+- Avoid N+1 queries (use joins, IN, bulk fetch)
+- NEVER call DB inside loops
+- Use ORM/Query Builder properly
+- Use parameterized queries ONLY
+- Avoid raw/dynamic SQL
+- Select only required fields
+- Use transactions for critical operations
+- Use bulk operations instead of loops
+
+## ✅ Async & Performance
+- Use async/await
+- Avoid blocking operations
+- Use Promise.all with limits
+- Cache frequently used data (Redis)
+- Use queues (BullMQ) for heavy jobs
+
+## ✅ Error Handling
+- Centralized error handling
+- No sensitive logs
+- No stack traces in production
+- Use custom error classes
+
+## ✅ Validation & Security
+- Validate inputs (Joi/Zod)
+- Sanitize inputs
+- Use ENV variables
+- Fail if critical ENV missing
+- Implement JWT/OAuth properly
+
+## 🔐 VAPT Rules
+
+### Authentication & Authorization
+- All routes must be authenticated
+- No public admin/debug endpoints
+- Enforce RBAC
+- Validate ownership (prevent IDOR)
+
+### Sensitive Data
+- No logging of tokens/passwords
+- Mask sensitive fields
+- No hardcoded secrets
+
+### API Security
+- Protect all state-changing APIs
+- Apply rate limiting
+- Secure Swagger
+
+### Injection Prevention
+- Prevent SQL/NoSQL injection
+- No dynamic query building
+
+### SSRF
+- Allow only trusted domains
+- Block internal IPs
+
+### File Handling
+- Validate file size/type
+- Avoid memory overflow
+
+### Misconfiguration
+- No open CORS
+- No default credentials
+- No debug routes in production
+
+### Cryptography
+- No plaintext tokens
+- Use strong secrets
+- Implement token rotation
+
+### Logging
+- No public log APIs
+- Log metadata only
+
+### Dependencies
+- Maintain lockfile
+- Run npm audit
+
+### Business Logic
+- Protect financial workflows
+- Restrict worker endpoints
+
+## ⚡ Performance Rules
+- No DB calls inside loops
+- Use bulk operations
+- Fix N+1 queries
+
+## 🛡️ OWASP Top 10 Mapping
+- A01 Broken Access Control
+- A02 Cryptographic Failures
+- A03 Injection
+- A04 Insecure Design
+- A05 Security Misconfiguration
+- A06 Vulnerable Components
+- A07 Authentication Failures
+- A08 Data Integrity Failures
+- A09 Logging Failures
+- A10 SSRF
+
+## 📊 Audit Output Format
+- Title
+- Severity
+- Description
+- Impact
+- Files
+- Recommendation
+
+## 🚨 Severity
+- Critical / High / Medium / Low
+
+## 📌 Final Summary
+- Total issues
+- Top risks
+- Security posture
+
+## 🚫 Avoid
+- any type
+- business logic in controllers
+- blocking code
+- unhandled promises
+- hardcoded secrets
+- sensitive logging

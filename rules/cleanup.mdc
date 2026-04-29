@@ -1,0 +1,26 @@
+description: Remove unused imports/variables before committing
+alwaysApply: true
+
+You must ensure no unused imports, variables, parameters, or dead code exist in any generated or modified code.
+
+Do not generate or leave behind unused code. Always clean up before final output.
+
+# No unused imports/variables on commit
+
+- Hard rule: Before any commit/PR, remove all unused imports, variables, params, and dead code introduced by the change.
+- Do not “fix” by disabling lint (`eslint-disable`, `/* eslint-disable no-unused-vars */`) unless it’s truly required and scoped to the smallest region.
+
+## Checklist (run every time before commit)
+
+- Scan diffs for unused imports/vars and leftover temp code.
+- Run lint/diagnostics on edited files and fix:
+  - `no-unused-vars`
+  - unused `require(...)`
+  - unused destructuring
+  - unused function params (remove or rename to `_param` only if required by a signature)
+- Prefer deletion over suppression.
+
+## Examples
+
+- Bad: keep `const Sequelize = require('sequelize')` when not used
+- Good: delete the import or use it intentionally
