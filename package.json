@@ -1,7 +1,5 @@
-
-
 {
-  "name": "@your-company/cursor-rules",
+  "name": "@mobikasa/cursor-rules",
   "version": "1.0.0",
   "private": true,
   "files": ["rules", "copyRules.js"]
